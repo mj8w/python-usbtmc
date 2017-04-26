@@ -322,7 +322,7 @@ class Instrument(object):
             else:
                 self.device = find_device(self.idVendor, self.idProduct, self.iSerial)
                 if self.device is None:
-                    raise UsbtmcException("Device not found", 'init')
+                    raise UsbtmcException("Device not found: vend {} :: prod {} :: serial {}" % (self.idVendor, self.idProduct, "" if self.iSerial == None else self.iSerial), 'init')
 
     def __del__(self):
         if self.connected:
